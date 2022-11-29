@@ -1,0 +1,54 @@
+class Human(self, name: string, mother: Human = null, father: Human = null) {
+  self.name = name
+
+  // register as a child (Mothered) in mother
+  if !isnull(mother) {
+    mother.appendMotheredHuman(self)
+  }
+  // register as a child (Fathered) in father
+  if !isnull(father) {
+    father.appendFatheredHuman(self)
+  }
+  // ! Constructor up to here
+
+  // this is method of Human
+  func printFamilyTree(self, level: u32) {
+    for i in range(level) {
+      print "    "
+    }
+  
+    println self.name
+
+    for child in self.motheredHumans() {
+      child.printFamilyTree(level + 1)
+    }
+
+    for child in self.fatheredHumans() {
+      child.printFamilyTree(level + 1)
+    }
+  }
+}
+
+// relation as graph
+relation DoublyLinked Human:"Mother" Human:"Mothered" cascade
+relation DoublyLinked Human:"Fater" Human:"Fathered" cascade
+
+// parents
+adam = Human("Adam")
+eve = Human("Eve")
+
+// children
+cain = Human("Cain", eve, adam)
+abel = Human("Abel", eve, adam)
+alice = Human("Alice", eve, adam)
+bob = Human("Bob", eve, adam)
+malory = Human("Malory", alice, abel)
+
+// grandchild
+robert = Human("Robert", alice, cain)
+cindy = Human("Cindy", alice, bob)
+
+
+abel.destroy()
+adam.printFamilyTree(0u32)
+eve.printFamilyTree(0u32)

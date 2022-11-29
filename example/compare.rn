@@ -1,0 +1,13 @@
+if argv.length() != 3 {
+  throw "Specify two arguments"
+}
+
+maximum = max(argv[1], argv[2])
+println maximum, " is large" 
+
+func max(a, b) {
+  println a
+  println b
+  
+  return a >= b ? a : b
+}
