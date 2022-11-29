@@ -1,0 +1,14 @@
+version: '3'
+services:
+  rune:
+    build:
+      context: .
+      args:
+        host_uid: $CUID
+        host_gid: $CGID
+        user: $CU
+        group: $CG
+    tty: true
+    volumes:
+      - ./:/workspace
+    working_dir: /workspace

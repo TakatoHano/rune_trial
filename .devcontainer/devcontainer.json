@@ -1,0 +1,15 @@
+{
+  "name": "Rune",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "rune",
+  "initializeCommand": "bash init.sh",
+  "workspaceFolder": "/workspace",
+  "extensions": [
+    "oderwat.indent-rainbow",
+    "aaron-bond.better-comments",
+    "dzhavat.bracket-pair-toggler"
+  ],
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "bash"
+  }
+}
